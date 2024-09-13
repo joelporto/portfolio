@@ -21,6 +21,12 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+
+ .tech-stack-section{
+    display: flex;
+    flex-direction: column;
+}
+
 .info-section {
     max-width: 500px;
     text-align: center;
@@ -52,6 +58,7 @@ body {
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
 }
 
 
