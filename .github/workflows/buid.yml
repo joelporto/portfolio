@@ -2,22 +2,23 @@ name: deploy
 
 on:
   push:
-    - master
+    branches:
+      - master
 
 jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '14.x'
-    - name: Buid web-app
-      run: |
-        npm ci
-        npm run buid
-    - name: Deploy to portfolio
-      uses: peaceiris/actions-portfolio@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./buid
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Build web-app
+        run: |
+          npm ci
+          npm run build
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
